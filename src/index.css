@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-game-bg: #0f172a;
+  --color-game-card: #1e293b;
+  --color-game-accent: #10b981;
+  --color-game-danger: #ef4444;
+}
+
+@layer base {
+  body {
+    @apply bg-game-bg text-slate-100 font-sans antialiased overflow-hidden;
+  }
+}
+
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+.number-block {
+  @apply relative flex items-center justify-center text-2xl font-bold rounded-lg cursor-pointer transition-all duration-200 select-none;
+}
+
+.number-block.selected {
+  @apply scale-90 ring-4 ring-game-accent bg-game-accent text-white shadow-[0_0_20px_rgba(16,185,129,0.5)];
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
